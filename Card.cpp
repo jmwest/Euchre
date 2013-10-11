@@ -125,7 +125,19 @@ void Card_init(Card *card_ptr, const char* rank, const char* suit)
 
 int Card_compare(const Card *a, const Card *b, Suit trump)
 {
-	assert(0);
+	assert(a);
+	assert(b);
+
+	if (Card_is_trump(a, trump) and !Card_is_trump(b, trump)) {
+		return 1;
+	}
+	else if (!Card_is_trump(a, trump) and Card_is_trump(b, trump)) {
+		return -1;
+	}
+	else {
+		return (a->rank + a->suit + a->rank*SUIT_NAMES_SIZE)
+		-  (b->rank + b->suit + b->rank*SUIT_NAMES_SIZE);
+	}
 }
 
 
