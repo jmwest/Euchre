@@ -101,10 +101,6 @@ int Card_compare(const Card *a, const Card *b) {
 
 void Card_init(Card *card_ptr, const char* rank, const char* suit)
 {
-
-	card_ptr->rank = rank;
-	card_ptr->suit = suit;
-
 	assert(0);
 }
 
