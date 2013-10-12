@@ -96,7 +96,7 @@ int Card_compare(const Card *a, const Card *b) {
     // same output, we’ve added an additional rule here.  In addition to being
     // ordered by rank, cards are also ordered by suit.
     return (a->rank + a->suit + a->rank*SUIT_NAMES_SIZE)
-    -  (b->rank + b->suit + b->rank*SUIT_NAMES_SIZE);
+			-  (b->rank + b->suit + b->rank*SUIT_NAMES_SIZE);
 }
 
 
@@ -135,13 +135,79 @@ int Card_compare(const Card *a, const Card *b, Suit trump)
 		return -1;
 	}
 	else {
+		if (Card_is_right_bower(a, trump) and !Card_is_right_bower(b, trump))
+		{
+			return 1;
+		}
+		else if (!Card_is_right_bower(a, trump) and Card_is_right_bower(b, trump))
+		{
+			return -1;
+		}
+		else if (Card_is_left_bower(a, trump) and !Card_is_left_bower(b, trump))
+		{
+			return 1;
+		}
+		else if (!Card_is_left_bower(a, trump) and Card_is_left_bower(b, trump))
+		{
+			return -1;
+		}
+
 		return (a->rank + a->suit + a->rank*SUIT_NAMES_SIZE)
-		-  (b->rank + b->suit + b->rank*SUIT_NAMES_SIZE);
+				- (b->rank + b->suit + b->rank*SUIT_NAMES_SIZE);
 	}
 }
 
 
-int Card_compare(const Card *a, const Card *b, Suit trump, Suit led) {
-    //IMPLEMENT ME!
-    assert(0);
+int Card_compare(const Card *a, const Card *b, Suit trump, Suit led)
+{
+	assert(a);
+	assert(b);
+	
+	if (Card_is_trump(a, trump) and !Card_is_trump(b, trump))
+	{
+		return 1;
+	}
+	else if (!Card_is_trump(a, trump) and Card_is_trump(b, trump))
+	{
+		return -1;
+	}
+	else if (Card_is_trump(a, trump) or Card_is_trump(b, trump))
+	{
+		if (Card_is_right_bower(a, trump) and !Card_is_right_bower(b, trump))
+		{
+			return 1;
+		}
+		else if (!Card_is_right_bower(a, trump) and Card_is_right_bower(b, trump))
+		{
+			return -1;
+		}
+		else if (Card_is_left_bower(a, trump) and !Card_is_left_bower(b, trump))
+		{
+			return 1;
+		}
+		else if (!Card_is_left_bower(a, trump) and Card_is_left_bower(b, trump))
+		{
+			return -1;
+		}
+
+		return (a->rank + a->suit + a->rank*SUIT_NAMES_SIZE)
+				- (b->rank + b->suit + b->rank*SUIT_NAMES_SIZE);
+	}
+	else
+	{
+		if ((a->suit == led) and !(b->suit == led))
+		{
+			return 1;
+		}
+		else if (!(a->suit == led) and (b->suit == led))
+		{
+			return -1;
+		}
+		else
+		{
+			return (a->rank + a->suit + a->rank*SUIT_NAMES_SIZE)
+					- (b->rank + b->suit + b->rank*SUIT_NAMES_SIZE);
+
+		}
+	}
 }
