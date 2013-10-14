@@ -118,8 +118,6 @@ void Card_init(Card *card_ptr, const char* rank, const char* suit)
 		}
     }
 
-	cout << card_ptr->rank << ", " << card_ptr->suit << endl;
-
     return;
 }
 
