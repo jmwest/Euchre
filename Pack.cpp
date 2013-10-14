@@ -84,7 +84,7 @@ void Pack_shuffle(Pack *pack_ptr)
 
 		for (int k = 0; k < 17; k++)
 		{
-			pack_ptr->cards[23 - k] = pack_ptr->cards[22 - k];
+			pack_ptr->cards[23 - k] = pack_ptr->cards[16 - k];
 		}
 
 		for (int m = 0; m < 7; m++)

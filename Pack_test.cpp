@@ -59,7 +59,8 @@ int main() {
 	////////////////////////////////////////
 	// Pack_shuffle() unit tests
 	Pack_shuffle(&pack);
-	
+	Pack_print(&pack);
+
 	Card queen_spades = {QUEEN, SPADES};
 	first_card = *(pack.next);
 	assert(Card_compare(&first_card, &queen_spades) == 0);
@@ -70,7 +71,7 @@ int main() {
 	
 	
 	// if we got to the end without calling an assert(), the tests passed
-	cout << "Pack_test PASS" << endl;
+	cout << endl << "Pack_test PASS" << endl;
 	
 	return 0;
 }
