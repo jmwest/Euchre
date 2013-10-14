@@ -10,6 +10,7 @@
 
 void Pack_init(Pack *pack_ptr, const char* pack_filename)
 {
+	
 	return;
 }
 

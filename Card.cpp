@@ -102,22 +102,23 @@ int Card_compare(const Card *a, const Card *b) {
 
 void Card_init(Card *card_ptr, const char* rank, const char* suit)
 {
-    Rank rank_array[13] = { TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN,
-        JACK, QUEEN, KING, ACE };
-
-    Suit suit_array[4] = { SPADES, HEARTS, CLUBS, DIAMONDS };
-    
     for (int i = 0; i < RANK_NAMES_SIZE; i++) {
-        if (*RANK_NAMES[i] == *rank) {
-            card_ptr->rank = rank_array[i];
-        }
+		for (int j = 0; (*(RANK_NAMES[i] + j) == *(rank + j)) && (j < 3); j++) {
+			if (j == 2)
+			{
+				card_ptr->rank = static_cast<Rank>(i);
+			}
+		}
     }
 
-    for (int j = 0; j < SUIT_NAMES_SIZE; j++) {
-        if (*SUIT_NAMES[j] == *suit) {
-            card_ptr->suit = suit_array[j];
-        }
+    for (int i = 0; i < SUIT_NAMES_SIZE; i++) {
+		if (*SUIT_NAMES[i] == *suit)
+		{
+			card_ptr->suit = static_cast<Suit>(i);
+		}
     }
+
+	cout << card_ptr->rank << ", " << card_ptr->suit << endl;
 
     return;
 }

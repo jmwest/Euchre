@@ -13,8 +13,17 @@
 
 using namespace std;
 
+const Rank Ranks[] = { TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING, ACE };
+const Suit Suits[] = { SPADES, HEARTS, CLUBS, DIAMONDS };
+
 int main()
 {
+
+	const char *SUIT_NAME[] = {"Spades", "Hearts", "Clubs", "Diamonds"};
+	const char *RANK_NAME[] = {"Two", "Three", "Four", "Five", "Six",
+		"Seven", "Eight", "Nine", "Ten", "Jack",
+		"Queen", "King", "Ace"};
+
 	////////////////////////////////////////
 	// Suit_next() unit tests
 	Suit s = Suit_next(HEARTS);
@@ -25,6 +34,21 @@ int main()
 	Card two_spades;
 	Card_init(&two_spades, TWO, SPADES);
 	assert(two_spades.rank == TWO && two_spades.suit == SPADES);
+
+
+	Card deck[52];
+
+	for (int i = 0; i < 13; i++) {
+		for (int j = 0; j < 4; j++) {
+			Card_init(&deck[(4 * i) + j], RANK_NAME[i], SUIT_NAME[j]);
+		}
+	}
+
+	for (int k = 0; k < 13; k++) {
+		for (int m = 0; m < 4; m++) {
+			assert(deck[(4 * k) + m].rank == Ranks[k] && deck[(4 * k) + m].suit == Suits[m]);
+		}
+	}
 
 	////////////////////////////////////////
 	// Card_print() unit tests (unchecked)
