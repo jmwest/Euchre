@@ -29,7 +29,7 @@ void Player_init(Player *player_ptr, const char *name)
 
 void Player_print(const Player *player_ptr)
 {
-	cout << endl << player_ptr->name << endl;
+	cout << endl << player_ptr->name << " has " << player_ptr->hand_size << " cards." << endl;
 
 	for (int i = 0; i < player_ptr->hand_size; i++) {
 		cout << RANK_NAME[player_ptr->hand[i].rank] << " of " << SUIT_NAME[player_ptr->hand[i].suit] << endl;
@@ -40,7 +40,7 @@ void Player_print(const Player *player_ptr)
 
 void Player_add_card(Player *player_ptr, const Card *c)
 {
-	player_ptr->hand[player_ptr->hand_size + 1] = *c;
+	player_ptr->hand[player_ptr->hand_size] = *c;
 
 	player_ptr->hand_size++;
 
@@ -101,7 +101,7 @@ void Player_add_and_discard(Player *player_ptr, const Card *upcard, Suit trump)
 {
 	int card_to_discard = 0;
 
-	for (int i = 1; i < 5; i++)
+	for (int i = 1; i < player_ptr->hand_size; i++)
 	{
 		if (Card_compare(&player_ptr->hand[card_to_discard], &player_ptr->hand[i], trump) > 0)
 		{
@@ -109,7 +109,14 @@ void Player_add_and_discard(Player *player_ptr, const Card *upcard, Suit trump)
 		}
 	}
 
-	player_ptr->hand[card_to_discard] = *upcard;
+	if (Card_compare(&player_ptr->hand[card_to_discard], upcard, trump) > 0)
+	{
+		return;
+	}
+	else
+	{
+		player_ptr->hand[card_to_discard] = *upcard;
+	}
 
 	return;
 }
@@ -120,16 +127,16 @@ Card Player_lead_card(Player *player_ptr, Suit trump)
 
 	for (int i = 1; i < player_ptr->hand_size; i++)
 	{
-		if ((card_to_lead.suit == trump)
-			&& (player_ptr->hand[i].suit == trump))
+		if ((Card_is_trump(&card_to_lead, trump))
+			&& Card_is_trump(&player_ptr->hand[i], trump))
 		{
 			if (Card_compare(&card_to_lead, &player_ptr->hand[i], trump) < 0)
 			{
 				card_to_lead = player_ptr->hand[i];
 			}
 		}
-		else if ((card_to_lead.suit == trump)
-				 && !(player_ptr->hand[i].suit == trump))
+		else if (Card_is_trump(&card_to_lead, trump)
+				 && !Card_is_trump(&player_ptr->hand[i], trump))
 		{
 			card_to_lead = player_ptr->hand[i];
 		}
