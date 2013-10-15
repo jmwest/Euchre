@@ -7,108 +7,185 @@
 //
 
 #include "Player.h"
-/* Player_test.cpp
- *
- * Unit tests for Player
- *
- */
-
-#include "Player.h"
-#include "Pack.h"
-#include "Card.h"
-#include <cassert>
-#include <cstring>
 #include <iostream>
 
 using namespace std;
 
-int main() {
-	
-	////////////////////////////////////////
-	// Player_init() unit tests
-	Player alice;
-	Player_init(&alice, "Alice");
-	assert( strcmp(alice.name, "Alice") == 0 );
-	assert( alice.hand_size == 0 );
-	
-	
-	////////////////////////////////////////
-	// Player_add_card() unit tests
-	
-	// Create player Bob and give him an awesome hand for Spades trump
-	Card awesome_spades_hand[MAX_HAND_SIZE] =
-    { {QUEEN, SPADES},
-		{KING, SPADES},
-		{ACE, SPADES},
-		{JACK, CLUBS},
-		{JACK, SPADES}, };
-	Player bob;
-	Player_init(&bob, "Bob");
-	for (int i=0; i<MAX_HAND_SIZE; ++i) {
-		Player_add_card(&bob, &awesome_spades_hand[i]);
-		assert(bob.hand_size == i+1);
+const char *SUIT_NAME[] = {"Spades", "Hearts", "Clubs", "Diamonds"};
+const char *RANK_NAME[] = {"Two", "Three", "Four", "Five", "Six",
+    "Seven", "Eight", "Nine", "Ten", "Jack",
+    "Queen", "King", "Ace"};
+
+void Player_init(Player *player_ptr, const char *name)
+{
+	for (int i = 0; name[i] != '\0'; i++) {
+		player_ptr->name[i] = name[i];
 	}
+
+	player_ptr->hand_size = 0;
+
+	return;
+}
+
+void Player_print(const Player *player_ptr)
+{
+	cout << endl << player_ptr->name << endl;
+
+	for (int i = 0; i < player_ptr->hand_size; i++) {
+		cout << RANK_NAME[player_ptr->hand[i].rank] << " of " << SUIT_NAME[player_ptr->hand[i].suit] << endl;
+	}
+
+	return;
+}
+
+void Player_add_card(Player *player_ptr, const Card *c)
+{
+	player_ptr->hand[player_ptr->hand_size + 1] = *c;
+
+	player_ptr->hand_size++;
+
+	return;
+}
+
+Make_response Player_make_trump(const Player *player_ptr, const Card *upcard, Player *dealer, int round)
+{
+	Make_response player_response;
 	
-	// Check that Bob's hand actually has all those spades
-	assert(bob.hand_size == MAX_HAND_SIZE);
-	for (int i=0; i<MAX_HAND_SIZE; ++i)
-		assert(Card_compare(&bob.hand[i], &awesome_spades_hand[i]) == 0);
+	player_response.orderup = false;
+
+	if (round == 1)
+	{
+		int trump_face = 0;
+		player_response.trump = upcard->suit;
+
+		for (int i = 0; i < 5; i++)
+		{
+			if (Card_is_trump(&player_ptr->hand[i], upcard->suit)
+				&& (player_ptr->hand[i].rank >= 9))
+			{
+				trump_face++;
+			}
+		}
+
+		if (trump_face >= 2)
+		{
+			player_response.orderup = true;
+
+			return player_response;
+		}
+		else
+		{
+			return player_response;
+		}
+	}
+	else
+	{
+		player_response.trump = Suit_next(upcard->suit);
+
+		for (int i = 0; i < 5; i++)
+		{
+			if (Card_is_trump(&player_ptr->hand[i], upcard->suit)
+				&& (player_ptr->hand[i].rank >= 9))
+			{
+				player_response.orderup = true;
+
+				return player_response;
+			}
+		}
+
+		return player_response;
+	}
+}
+
+void Player_add_and_discard(Player *player_ptr, const Card *upcard, Suit trump)
+{
+	int card_to_discard = 0;
+
+	for (int i = 1; i < 5; i++)
+	{
+		if (Card_compare(&player_ptr->hand[card_to_discard], &player_ptr->hand[i], trump) > 0)
+		{
+			card_to_discard = i;
+		}
+	}
+
+	player_ptr->hand[card_to_discard] = *upcard;
+
+	return;
+}
+
+Card Player_lead_card(Player *player_ptr, Suit trump)
+{
+	Card card_to_lead = player_ptr->hand[0];
+
+	for (int i = 1; i < player_ptr->hand_size; i++)
+	{
+		if ((card_to_lead.suit == trump)
+			&& (player_ptr->hand[i].suit == trump))
+		{
+			if (Card_compare(&card_to_lead, &player_ptr->hand[i], trump) < 0)
+			{
+				card_to_lead = player_ptr->hand[i];
+			}
+		}
+		else if ((card_to_lead.suit == trump)
+				 && !(player_ptr->hand[i].suit == trump))
+		{
+			card_to_lead = player_ptr->hand[i];
+		}
+		else
+		{
+			if (Card_compare(&card_to_lead, &player_ptr->hand[i]) < 0)
+			{
+				card_to_lead = player_ptr->hand[i];
+			}
+		}
+	}
+
+	return card_to_lead;
+}
+
+Card Player_play_card(Player *player_ptr, Suit led_suit, Suit trump)
+{
+	bool can_follow_lead = false;
+	int cards_following_led[5];
+	int number_cards_following_led = 0;
+	Card card_to_play;
 	
-	
-	////////////////////////////////////////
-	// Player_print() unit tests (unchecked)
-	Player_print(&alice);
-	
-	
-	////////////////////////////////////////
-	// Player_make_trump() unit tests
-	
-	// Bob should order up Spades if the upcard is a low Spade
-	Card nine_spades;
-	Card_init(&nine_spades, NINE, SPADES);
-	Make_response bob_response = Player_make_trump
-    (&bob,            //Player calling trump
-     &nine_spades,    //upcard
-     &bob,            //Bob is also the dealer
-     1);              //first round
-	assert (bob_response.orderup == true);
-	assert (bob_response.trump == SPADES);
-	
-	
-	////////////////////////////////////////
-	// Player_add_and_discard() unit tests
-	
-	// Bob will throw away the upcard if it's lower than the cards in his hand
-	Player_add_and_discard(&bob, &nine_spades, SPADES);
-	assert(bob.hand_size == 5);
-	for (int i=0; i<bob.hand_size; ++i)
-		assert(Card_compare(&bob.hand[i], &awesome_spades_hand[i]) == 0);
-	
-	
-	////////////////////////////////////////
-	// Card Player_lead_card() unit tests
-	
-	// Bob has the right bower, the max, which he should play if spades is led
-	Card card_led = Player_lead_card(&bob, SPADES);
-	Card jack_spades;
-	Card_init(&jack_spades, JACK, SPADES);
-	assert(Card_compare(&card_led, &jack_spades) == 0);
-	
-	
-	////////////////////////////////////////
-	// Player_play_card() unit tests
-	
-	// Bob has all spades, so he should play the min if Diamonds is led
-	Card card_played = Player_play_card
-    (&bob,      //Bob plays the card
-     DIAMONDS,  //Diamonds is led
-     SPADES);   //Spades is trump
-	Card queen_spades;
-	Card_init(&queen_spades, QUEEN, SPADES);
-	assert(Card_compare(&card_played, &queen_spades) == 0);
-	
-	// if we got to the end without calling an assert(), the tests passed
-	cout << "Player_test PASS" << endl;
-	
-	return 0;
+	for (int i = 0; i < player_ptr->hand_size; i++)
+	{
+		if (player_ptr->hand[i].suit == led_suit)
+		{
+			can_follow_lead = true;
+			cards_following_led[number_cards_following_led] = i;
+			number_cards_following_led++;
+		}
+	}
+
+	if (can_follow_lead)
+	{
+		card_to_play = player_ptr->hand[cards_following_led[0]];
+
+		for (int j = 1; j < number_cards_following_led; j++)
+		{
+			if (Card_compare(&card_to_play, &player_ptr->hand[cards_following_led[j]]) < 0)
+			{
+				card_to_play = player_ptr->hand[cards_following_led[j]];
+			}
+		}
+	}
+	else
+	{
+		card_to_play = player_ptr->hand[0];
+
+		for (int k = 1; k < player_ptr->hand_size; k++)
+		{
+			if (Card_compare(&card_to_play, &player_ptr->hand[k], trump, led_suit) > 0)
+			{
+				card_to_play = player_ptr->hand[k];
+			}
+		}
+	}
+
+	return card_to_play;
 }
