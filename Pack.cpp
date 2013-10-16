@@ -27,9 +27,20 @@ void Pack_init(Pack *pack_ptr, const char* pack_filename)
 
 	pack_in.open(pack_filename);
 
-	for (int i = 0; !pack_in.eof(); i++) {
-		if (pack_in.fail()) {
+	if (pack_in.fail())
+	{
+		cout << "Error opening " << pack_filename << endl;
+		
+		exit(EXIT_FAILURE);
+	}
+
+	for (int i = 0; !pack_in.eof(); i++)
+	{
+		if (pack_in.fail())
+		{
 			cout << "Error opening " << pack_filename << endl;
+
+			exit(EXIT_FAILURE);
 		}
 
 		pack_in >> rank_string >> of_string >> suit_string;
@@ -40,6 +51,7 @@ void Pack_init(Pack *pack_ptr, const char* pack_filename)
 	pack_ptr->next = pack_ptr->cards;
 
 	pack_in.close();
+
 	return;
 }
 
@@ -47,8 +59,11 @@ void Pack_print(const Pack *pack_ptr)
 {
 	cout << endl;
 
-	for (int i = 0; i < 24; i++) {
-		cout << RANKS[pack_ptr->cards[i].rank] << " of " << SUITS[pack_ptr->cards[i].suit] << endl;
+	for (int i = 0; i < 24; i++)
+	{
+		cout << RANKS[pack_ptr->cards[i].rank]
+			 << " of " << SUITS[pack_ptr->cards[i].suit]
+			 << endl;
 	}
 
 	return;
@@ -92,6 +107,8 @@ void Pack_shuffle(Pack *pack_ptr)
 			pack_ptr->cards[m] = last_seven[m];
 		}
 	}
+
+	pack_ptr->next = pack_ptr->cards;
 
 	return;
 }

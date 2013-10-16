@@ -19,8 +19,8 @@ const Suit Suits[] = { SPADES, HEARTS, CLUBS, DIAMONDS };
 int main()
 {
 
-	const char *SUIT_NAME[] = {"Spades", "Hearts", "Clubs", "Diamonds"};
-	const char *RANK_NAME[] = {"Two", "Three", "Four", "Five", "Six",
+	const char *suit_name[] = {"Spades", "Hearts", "Clubs", "Diamonds"};
+	const char *rank_name[] = {"Two", "Three", "Four", "Five", "Six",
 		"Seven", "Eight", "Nine", "Ten", "Jack",
 		"Queen", "King", "Ace"};
 
@@ -40,7 +40,7 @@ int main()
 
 	for (int i = 0; i < 13; i++) {
 		for (int j = 0; j < 4; j++) {
-			Card_init(&deck[(4 * i) + j], RANK_NAME[i], SUIT_NAME[j]);
+			Card_init(&deck[(4 * i) + j], rank_name[i], suit_name[j]);
 		}
 	}
 
@@ -53,8 +53,14 @@ int main()
 	////////////////////////////////////////
 	// Card_print() unit tests (unchecked)
 	Card_print(&two_spades);
+	cout << endl;/*
 	cout << endl;
 
+	for (int i = 0; i < 52; i++) {
+		Card_print(deck + i);
+		cout << endl;
+	}
+*/
 	////////////////////////////////////////
 	// Card_is_right_bower() unit tests
 	Card jack_spades, jack_clubs;
@@ -75,10 +81,11 @@ int main()
 	
 	////////////////////////////////////////
 	// Card_compare() unit tests
-	Card ace_diamonds, ace_hearts, jack_diamonds;
+	Card ace_diamonds, ace_hearts, jack_diamonds, jack_hearts;
 	Card_init(&ace_diamonds, ACE, DIAMONDS);
 	Card_init(&ace_hearts, ACE, HEARTS);
 	Card_init(&jack_diamonds, JACK, DIAMONDS);
+	Card_init(&jack_hearts, JACK, HEARTS);
 	assert(Card_compare(&ace_diamonds, &ace_hearts) > 0);
 	assert(Card_compare(&ace_hearts, &ace_diamonds) < 0);
 	assert(Card_compare(&ace_diamonds, &jack_diamonds) > 0);
@@ -107,6 +114,11 @@ int main()
 	assert(Card_compare(&ace_diamonds, &jack_diamonds, DIAMONDS) < 0);
 	assert(Card_compare(&jack_clubs, &jack_spades, CLUBS) > 0);
 	assert(Card_compare(&jack_clubs, &jack_spades, SPADES) < 0);
+	assert(Card_compare(&jack_clubs, &jack_spades, HEARTS) > 0);
+	assert(Card_compare(&jack_clubs, &jack_spades, DIAMONDS) > 0);
+	assert(Card_compare(&jack_clubs, &jack_diamonds, DIAMONDS) < 0);
+	assert(Card_compare(&jack_clubs, &jack_diamonds, HEARTS) < 0);
+	assert(Card_compare(&jack_clubs, &jack_hearts, HEARTS) < 0);
 
 	////////////////////////////////////////
 	// Card_compare() unit tests
@@ -115,8 +127,10 @@ int main()
 	assert(Card_compare(&ace_diamonds, &ace_hearts, DIAMONDS, CLUBS) > 0);
 	assert(Card_compare(&ace_diamonds, &ace_hearts, HEARTS, CLUBS) < 0);
 	assert(Card_compare(&ace_hearts, &ace_diamonds, DIAMONDS, CLUBS) < 0);
+	assert(Card_compare(&ace_hearts, &ace_diamonds, DIAMONDS, HEARTS) < 0);
 	assert(Card_compare(&ace_diamonds, &jack_diamonds, SPADES, CLUBS) > 0);
 	assert(Card_compare(&ace_diamonds, &jack_diamonds, DIAMONDS, CLUBS) < 0);
+	assert(Card_compare(&ace_diamonds, &jack_diamonds, DIAMONDS, DIAMONDS) < 0);
 	assert(Card_compare(&jack_clubs, &jack_spades, CLUBS, DIAMONDS) > 0);
 	assert(Card_compare(&jack_clubs, &jack_spades, SPADES, DIAMONDS) < 0);
 	assert(Card_compare(&ace_diamonds, &ace_hearts, DIAMONDS, HEARTS) > 0);

@@ -23,8 +23,16 @@ int main() {
 	////////////////////////////////////////
 	// Pack_init() unit tests
 	Pack pack;
+	Pack pack2;
+	Pack pack_fail;
 	Pack_init(&pack, "pack.in");
-	
+	Pack_init(&pack2, "pack2.in");
+
+	Pack_init(&pack_fail, "pack_fail");
+
+//	assert(pack);
+//	assert(pack2);
+
 	Card nine_spades = {NINE, SPADES};
 	Card first_card = *(pack.next);
 	assert(Card_compare(&first_card, &nine_spades) == 0);
@@ -32,12 +40,23 @@ int main() {
 	Card ace_diamonds = {ACE, DIAMONDS};
 	Card last_card = *(pack.cards + PACK_SIZE - 1);
 	assert(Card_compare(&last_card, &ace_diamonds) == 0);
-	
-	
+
+	Card first_card2 = pack2.cards[0];
+	Card seventh_card2 = pack2.cards[6];
+	Card last_card2 = pack2.cards[23];
+
+	Card ten_diamonds = {TEN, DIAMONDS};
+	Card queen_hearts = {QUEEN, HEARTS};
+	Card queen_spades = {QUEEN, SPADES};
+
+	assert(Card_compare(&first_card2, &ten_diamonds) == 0);
+	assert(Card_compare(&seventh_card2, &queen_hearts) == 0);
+	assert(Card_compare(&last_card2, &queen_spades) == 0);
+
 	////////////////////////////////////////
 	// Pack_print() unit tests (unchecked)
 	Pack_print(&pack);
-	
+	Pack_print(&pack2);
 	
 	////////////////////////////////////////
 	// Pack_deal_one() unit tests
@@ -58,10 +77,10 @@ int main() {
 	
 	////////////////////////////////////////
 	// Pack_shuffle() unit tests
+	Pack_deal_one(&pack);
 	Pack_shuffle(&pack);
 	Pack_print(&pack);
 
-	Card queen_spades = {QUEEN, SPADES};
 	first_card = *(pack.next);
 	assert(Card_compare(&first_card, &queen_spades) == 0);
 	

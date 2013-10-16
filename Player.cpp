@@ -29,10 +29,13 @@ void Player_init(Player *player_ptr, const char *name)
 
 void Player_print(const Player *player_ptr)
 {
-	cout << endl << player_ptr->name << " has " << player_ptr->hand_size << " cards." << endl;
+	cout << endl << player_ptr->name << " has "
+		<< player_ptr->hand_size << " cards." << endl;
 
-	for (int i = 0; i < player_ptr->hand_size; i++) {
-		cout << RANK_NAME[player_ptr->hand[i].rank] << " of " << SUIT_NAME[player_ptr->hand[i].suit] << endl;
+	for (int i = 0; i < player_ptr->hand_size; i++)
+	{
+		cout << RANK_NAME[player_ptr->hand[i].rank] << " of "
+			<< SUIT_NAME[player_ptr->hand[i].suit] << endl;
 	}
 
 	return;
@@ -81,6 +84,13 @@ Make_response Player_make_trump(const Player *player_ptr, const Card *upcard, Pl
 	else
 	{
 		player_response.trump = Suit_next(upcard->suit);
+
+		if (player_ptr == dealer)
+		{
+			player_response.orderup = true;
+
+			return player_response;
+		}
 
 		for (int i = 0; i < 5; i++)
 		{
