@@ -7,6 +7,8 @@
 //
 
 #include "Pack.h"
+
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <string>

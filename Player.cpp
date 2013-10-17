@@ -159,7 +159,8 @@ Card Player_lead_card(Player *player_ptr, Suit trump)
 			card_to_lead = player_ptr->hand[i];
 			index_of_lead_card = i;
 		}
-		else
+		else if (!Card_is_trump(&card_to_lead, trump)
+				 && !Card_is_trump(&player_ptr->hand[i], trump))
 		{
 			if (Card_compare(&card_to_lead, &player_ptr->hand[i]) < 0)
 			{

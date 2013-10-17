@@ -107,17 +107,47 @@ int main() {
 	
 	////////////////////////////////////////
 	// Card Player_lead_card() unit tests
-	
 	// Bob has the right bower, the max, which he should play if spades is led
 	Card card_led = Player_lead_card(&bob, SPADES);
 	Card jack_spades;
 	Card_init(&jack_spades, JACK, SPADES);
 	assert(Card_compare(&card_led, &jack_spades) == 0);
-	
-	
+	bob.hand_size = 5;
+
+	card_led = Player_lead_card(&bob, CLUBS);
+	Card ace_spades;
+	Card_init(&ace_spades, ACE, SPADES);
+	assert(Card_compare(&card_led, &ace_spades) == 0);
+	bob.hand_size = 5;
+
+	card_led = Player_lead_card(&bob, HEARTS);
+	assert(Card_compare(&card_led, &ace_spades) == 0);
+	bob.hand_size = 5;
+
+	card_led = Player_lead_card(&bob, DIAMONDS);
+	assert(Card_compare(&card_led, &ace_spades) == 0);
+
+	card_led = Player_lead_card(&alice, SPADES);
+	Card ten_hearts;
+	Card_init(&ten_hearts, TEN, HEARTS);
+	assert(Card_compare(&card_led, &ten_hearts) == 0);
+	alice.hand_size = 5;
+
+	card_led = Player_lead_card(&alice, CLUBS);
+	assert(Card_compare(&card_led, &ten_hearts) == 0);
+	alice.hand_size = 5;
+
+	card_led = Player_lead_card(&alice, HEARTS);
+	assert(Card_compare(&card_led, &jack_spades) == 0);
+	alice.hand_size = 5;
+
+	card_led = Player_lead_card(&alice, DIAMONDS);
+	assert(Card_compare(&card_led, &jack_spades) == 0);
+
+	Player_print(&alice);
+
 	////////////////////////////////////////
 	// Player_play_card() unit tests
-	
 	// Bob has all spades, so he should play the min if Diamonds is led
 	Card card_played = Player_play_card
     (&bob,      //Bob plays the card
@@ -126,7 +156,35 @@ int main() {
 	Card queen_spades;
 	Card_init(&queen_spades, QUEEN, SPADES);
 	assert(Card_compare(&card_played, &queen_spades) == 0);
-	
+
+	card_played = Player_play_card(&alice, DIAMONDS, SPADES);
+	assert(Card_compare(&card_played, &crappy_hand_for_alice[3]) == 0);
+	alice.hand_size = 4;
+
+	card_played = Player_play_card(&alice, CLUBS, SPADES);
+	assert(Card_compare(&card_played, &crappy_hand_for_alice[3]) == 0);
+	alice.hand_size = 4;
+
+	card_played = Player_play_card(&alice, SPADES, SPADES);
+	assert(Card_compare(&card_played, &crappy_hand_for_alice[2]) == 0);
+
+	Player_print(&alice);
+
+	card_played = Player_play_card(&alice, SPADES, SPADES);
+	assert(Card_compare(&card_played, &crappy_hand_for_alice[1]) == 0);
+
+	Player_print(&alice);
+
+	card_played = Player_play_card(&alice, HEARTS, SPADES);
+	assert(Card_compare(&card_played, &crappy_hand_for_alice[0]) == 0);
+
+	Player_print(&alice);
+
+	card_played = Player_play_card(&alice, SPADES, HEARTS);
+	assert(Card_compare(&card_played, &crappy_hand_for_alice[3]) == 0);
+
+	Player_print(&alice);
+
 	// if we got to the end without calling an assert(), the tests passed
 	cout << endl << "Player_test PASS" << endl;
 	
