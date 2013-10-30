@@ -185,10 +185,19 @@ Card Player_play_card(Player *player_ptr, Suit led_suit, Suit trump)
 	int number_cards_following_led = 0;
 	Card card_to_play;
 	int index_of_played_card;
-	
+
 	for (int i = 0; i < player_ptr->hand_size; i++)
 	{
-		if (player_ptr->hand[i].suit == led_suit)
+		if (led_suit == trump)
+		{
+			if (Card_is_trump(&player_ptr->hand[i], led_suit))
+			{
+				can_follow_lead = true;
+				cards_following_led[number_cards_following_led] = i;
+				number_cards_following_led++;
+			}
+		}
+		else if (player_ptr->hand[i].suit == led_suit)
 		{
 			can_follow_lead = true;
 			cards_following_led[number_cards_following_led] = i;

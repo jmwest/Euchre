@@ -108,6 +108,10 @@ void Game_play(Game *game_ptr)
 
 		trump = Game_select_trump(game_ptr, &game_ptr->players[dealer], dealer, &upcard, team_made);
 
+//		for (int i = 0; i < 4; i++) {
+//			Player_print(&game_ptr->players[i]);
+//		}
+
 		Game_play_hand(game_ptr, trump, &game_ptr->players[dealer], dealer, team_made);
 
 		dealer = Player_left(dealer);
@@ -213,12 +217,11 @@ static Suit Game_select_trump(Game *game_ptr, Player *dealer, const int dealer_n
 			}
 		}
 
-		round++;
-	}
+		if (player_response.orderup and round == 1) {
+			Player_add_and_discard(&game_ptr->players[dealer_num], upcard, player_response.trump);
+		}
 
-	if (round == 1)
-	{
-		Player_add_and_discard(dealer, upcard, player_response.trump);
+		round++;
 	}
 
 	return player_response.trump;
