@@ -100,7 +100,7 @@ Make_response Player_make_trump(const Player *player_ptr, const Card *upcard, Pl
 
 		for (int i = 0; i < 5; i++)
 		{
-			if (Card_is_trump(&player_ptr->hand[i], upcard->suit)
+			if (Card_is_trump(&player_ptr->hand[i], player_response.trump)
 				&& (player_ptr->hand[i].rank >= 9))
 			{
 				player_response.orderup = true;

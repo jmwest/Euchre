@@ -1,0 +1,43 @@
+
+Alice has 5 cards.
+Ten of Hearts
+Nine of Spades
+Ten of Spades
+Nine of Diamonds
+Nine of Clubs
+
+Bob has 5 cards.
+Queen of Spades
+King of Spades
+Ace of Spades
+Jack of Clubs
+Jack of Spades
+
+Alice has 5 cards.
+Ten of Hearts
+Nine of Spades
+Ten of Spades
+Nine of Diamonds
+Jack of Spades
+
+Alice has 4 cards.
+Ten of Hearts
+Nine of Spades
+Ten of Spades
+Nine of Diamonds
+
+Alice has 3 cards.
+Ten of Hearts
+Nine of Spades
+Nine of Diamonds
+
+Alice has 2 cards.
+Ten of Hearts
+Nine of Diamonds
+
+Alice has 1 cards.
+Nine of Diamonds
+
+Alice has 0 cards.
+
+Player_test PASS

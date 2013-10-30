@@ -27,22 +27,36 @@ static void Game_deal_card(Game *game_ptr, Player *dealer, const int dealer_num)
 static Suit Game_select_trump(Game *game_ptr, Player *dealer, const int dealer_num, Card *upcard, int &team_made);
 
 //
-static void Game_play_trick(Game *game_ptr, Suit trump, Player *dealer, int dealer_num, int team_made);
+static void Game_play_hand(Game *game_ptr, Suit trump, Player *dealer, int dealer_num, int team_made);
 
 //
-static void Game_print_passed(Player *player);
+static void Game_print_hand_and_dealer(const int &hand, const Player *dealer);
 
 //
-static void Game_print_orderup(Player *player, Suit suit);
+static void Game_print_turnup(const Card *card);
 
 //
-static void Game_print_led(Player *player, Card *card);
+static void Game_print_passes(const Player *player);
 
 //
-static void Game_print_play(Player *player, Card *card);
+static void Game_print_orderup(const Player *player, const Suit &suit);
 
 //
-static void Game_print_trick_winner(Player *player);
+static void Game_print_led(const Player *player, const Card *card);
+
+//
+static void Game_print_play(const Player *player, const Card *card);
+
+//
+static void Game_print_trick_winner(const Player *player);
+
+//
+static void Game_print_hand_winner(const Game *game_ptr, const int &team_won);
+
+//
+static void Game_print_team_score(const Game *game_ptr, const int &team);
+
+static void Game_print_winners(const Game *game_ptr, const int &team);
 
 //
 static int Player_left(int player_index);
@@ -51,6 +65,8 @@ const char *suit_names[] = {"Spades", "Hearts", "Clubs", "Diamonds"};
 const char *rank_names[] = {"Two", "Three", "Four", "Five", "Six",
     "Seven", "Eight", "Nine", "Ten", "Jack",
     "Queen", "King", "Ace"};
+const int TEAM_ONE = 0;
+const int TEAM_TWO = 1;
 
 void Game_init(Game *game_ptr, const char *pack_filename, bool shuffle, int points_to_win, const char *player_names[])
 {
@@ -75,23 +91,36 @@ void Game_play(Game *game_ptr)
 	Card upcard;
 	Suit trump;
 	int team_made = 0;
+	int hand = 0;
 
 	while ((game_ptr->points_to_win > game_ptr->score[0])
-		   or (game_ptr->points_to_win > game_ptr->score[1]))
+		   and (game_ptr->points_to_win > game_ptr->score[1]))
 	{
 		Game_shuffle(game_ptr);
+
+		Game_print_hand_and_dealer(hand, &game_ptr->players[dealer]);
 
 		Game_deal_hands(game_ptr, &game_ptr->players[dealer], dealer);
 
 		upcard = Pack_deal_one(&game_ptr->pack);
 
+		Game_print_turnup(&upcard);
+
 		trump = Game_select_trump(game_ptr, &game_ptr->players[dealer], dealer, &upcard, team_made);
 
-		Player_add_and_discard(&game_ptr->players[dealer], &upcard, trump);
-
-		Game_play_trick(game_ptr, trump, &game_ptr->players[dealer], dealer, team_made);
+		Game_play_hand(game_ptr, trump, &game_ptr->players[dealer], dealer, team_made);
 
 		dealer = Player_left(dealer);
+		hand = hand + 1;
+	}
+
+	if (game_ptr->score[TEAM_ONE] > game_ptr->score[TEAM_TWO])
+	{
+		Game_print_winners(game_ptr, TEAM_ONE);
+	}
+	else
+	{
+		Game_print_winners(game_ptr, TEAM_TWO);
 	}
 
 	return;
@@ -115,23 +144,16 @@ static void Game_deal_hands(Game *game_ptr, Player *dealer, const int dealer_num
 {
 	for (int i = 0; i < 2; i++)
 	{
-		for (int j = 0; j < 4; j++)
+		for (int j = 1; j < 5; j++)
 		{
-			if ((i == 0) and (j % 2 == 0))
+			if ((i == 0) and (j % 2 == 1))
 			{
 				for (int k = 0; k < 3; k++)
 				{
 					Game_deal_card(game_ptr, dealer, ((dealer_num + j) % 4));
 				}
 			}
-			else if ((i == 0) and (j % 2 == 1))
-			{
-				for (int k = 0; k < 2; k++)
-				{
-					Game_deal_card(game_ptr, dealer, ((dealer_num + j) % 4));
-				}
-			}
-			else if ((i == 1) and (j % 2 == 0))
+			else if ((i == 0) and (j % 2 == 0))
 			{
 				for (int k = 0; k < 2; k++)
 				{
@@ -139,6 +161,13 @@ static void Game_deal_hands(Game *game_ptr, Player *dealer, const int dealer_num
 				}
 			}
 			else if ((i == 1) and (j % 2 == 1))
+			{
+				for (int k = 0; k < 2; k++)
+				{
+					Game_deal_card(game_ptr, dealer, ((dealer_num + j) % 4));
+				}
+			}
+			else if ((i == 1) and (j % 2 == 0))
 			{
 				for (int k = 0; k < 3; k++)
 				{
@@ -163,22 +192,33 @@ static Suit Game_select_trump(Game *game_ptr, Player *dealer, const int dealer_n
 {
 	Make_response player_response = {false, DIAMONDS};
 	Player *current_player;
+	int round = 1;
 
-	for (int i = 0; !player_response.orderup; i++)
+	while (!player_response.orderup and round < 3)
 	{
-		current_player = &game_ptr->players[((dealer_num + i) % 4)];
-
-		player_response = Player_make_trump(current_player, upcard, dealer, 1 + (i / 4));
-
-		team_made = (dealer_num + i) % 4;
-
-		if (!player_response.orderup) {
-			Game_print_passed(&game_ptr->players[(dealer_num + i) % 4]);
-		}
-		else
+		for (int j = 1; !player_response.orderup and j < 5; j++)
 		{
-			Game_print_orderup(&game_ptr->players[(dealer_num + i) % 4], player_response.trump);
+			current_player = &game_ptr->players[((dealer_num + j) % 4)];
+
+			player_response = Player_make_trump(current_player, upcard, dealer, round);
+
+			team_made = (dealer_num + j) % 2;
+
+			if (!player_response.orderup) {
+				Game_print_passes(&game_ptr->players[(dealer_num + j) % 4]);
+			}
+			else
+			{
+				Game_print_orderup(&game_ptr->players[(dealer_num + j) % 4], player_response.trump);
+			}
 		}
+
+		round++;
+	}
+
+	if (round == 1)
+	{
+		Player_add_and_discard(dealer, upcard, player_response.trump);
 	}
 
 	return player_response.trump;
@@ -189,7 +229,7 @@ static int Player_left(int player_index)
 	return (player_index + 1) % 4;
 }
 
-static void Game_play_trick(Game *game_ptr, Suit trump, Player *dealer, int dealer_num, int team_made)
+static void Game_play_hand(Game *game_ptr, Suit trump, Player *dealer, int dealer_num, int team_made)
 {
 	int lead_player = Player_left(dealer_num);
 	int highest_card = 0;
@@ -223,42 +263,79 @@ static void Game_play_trick(Game *game_ptr, Suit trump, Player *dealer, int deal
 		else
 		{
 			team_two_tricks = team_two_tricks + 1;
-			team_won = 1;
 		}
 
 		Game_print_trick_winner(&game_ptr->players[(lead_player + highest_card) % 4]);
+
+		lead_player = (lead_player + highest_card) % 4;
+		highest_card = 0;
 	}
 
-	if (team_one_tricks == 5 or team_two_tricks == 5)
+	if (team_one_tricks > team_two_tricks)
 	{
-		if (team_won == team_made)
+		team_won = TEAM_ONE;
+	}
+	else
+	{
+		team_won = TEAM_TWO;
+	}
+
+	Game_print_hand_winner(game_ptr, team_won);
+
+	if (team_won != team_made)
+	{
+		game_ptr->score[team_won] = game_ptr->score[team_won] + 2;
+		cout << "euchred!" << endl;
+	}
+	else
+	{
+		if ((team_one_tricks == 5) or (team_two_tricks == 5))
 		{
-			cout << "euchred!" << endl;
+			game_ptr->score[team_won] = game_ptr->score[team_won] + 2;
+			cout << "march!" << endl;
 		}
 		else
 		{
-			cout << "march!" << endl;
+			game_ptr->score[team_won] = game_ptr->score[team_won] + 1;
 		}
 	}
 
+	Game_print_team_score(game_ptr, TEAM_ONE);
+	Game_print_team_score(game_ptr, TEAM_TWO);
+
 	return;
 }
 
-static void Game_print_passed(Player *player)
+static void Game_print_hand_and_dealer(const int &hand, const Player *dealer)
 {
-	cout << player->name << " passed" << endl;
+	cout << endl << "Hand " << hand << endl;
+	cout << dealer->name << " deals" << endl;
 
 	return;
 }
 
-static void Game_print_orderup(Player *player, Suit suit)
+static void Game_print_turnup(const Card *card)
+{
+	cout << rank_names[card->rank] << " of " << suit_names[card->suit] << " turned up" << endl;
+
+	return;
+}
+
+static void Game_print_passes(const Player *player)
+{
+	cout << player->name << " passes" << endl;
+
+	return;
+}
+
+static void Game_print_orderup(const Player *player, const Suit &suit)
 {
 	cout << player->name << " orders up " << suit_names[suit] << endl;
 
 	return;
 }
 
-static void Game_print_led(Player *player, Card *card)
+static void Game_print_led(const Player *player, const Card *card)
 {
 	cout << endl;
 	cout << rank_names[card->rank] << " of " << suit_names[card->suit] << " led by " << player->name << endl;
@@ -266,16 +343,37 @@ static void Game_print_led(Player *player, Card *card)
 	return;
 }
 
-static void Game_print_play(Player *player, Card *card)
+static void Game_print_play(const Player *player, const Card *card)
 {
 	cout << rank_names[card->rank] << " of " << suit_names[card->suit] << " played by " << player->name << endl;
 
 	return;
 }
 
-static void Game_print_trick_winner(Player *player)
+static void Game_print_trick_winner(const Player *player)
 {
 	cout << player->name << " takes the trick" << endl;
+
+	return;
+}
+
+static void Game_print_hand_winner(const Game *game_ptr, const int &team_won)
+{
+	cout << endl << game_ptr->players[team_won].name << " and " << game_ptr->players[team_won + 2].name << " win the hand" << endl;
+
+	return;
+}
+
+static void Game_print_team_score(const Game *game_ptr, const int &team)
+{
+	cout << game_ptr->players[team].name << " and " << game_ptr->players[team + 2].name << " have " << game_ptr->score[team] << " points" << endl;
+
+	return;
+}
+
+static void Game_print_winners(const Game *game_ptr, const int &team)
+{
+	cout << endl << game_ptr->players[team].name << " and " << game_ptr->players[team + 2].name << " win!" << endl;
 
 	return;
 }
