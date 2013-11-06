@@ -46,11 +46,6 @@ int main(int argc, char *argv[])
 	bool shuffle = false;
 	int points_to_win = 0;
 
-//	for (int i = 0; i < 4; i++)
-//	{
-//		strcpy(players[i], argv[i + 4]);
-//	}
-
 	for (int i = 0; i < argc; i++)
 	{
 		cout << argv[i] << " ";

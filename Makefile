@@ -24,6 +24,10 @@ test : Card_test Pack_test Player_test euchre
 	./euchre pack.in shuffle 10 Alice Bob Cathy Drew > euchre_test01.out
 	diff -q euchre_test01.out euchre_test01.out.correct
 
+test2: euchre
+	./euchre pack2.in noshuffle 10 Rick Steve Mack Horace > euchre_test10.out
+	./euchre pack2.in shuffle 15 Rick Steve Mack Horace > euchre_test11.out
+
 # type "make clean" to delete executables and temporary files
 clean :
 	rm -vf *.out euchre Card_test Pack_test Player_test

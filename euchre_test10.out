@@ -1,0 +1,362 @@
+./euchre pack2.in noshuffle 10 Rick Steve Mack Horace 
+Hand 0
+Rick deals
+King of Spades turned up
+Steve orders up Spades
+
+Ten of Diamonds led by Steve
+Ace of Diamonds played by Mack
+Nine of Hearts played by Horace
+King of Hearts played by Rick
+Mack takes the trick
+
+King of Diamonds led by Mack
+Jack of Hearts played by Horace
+Ace of Hearts played by Rick
+Nine of Clubs played by Steve
+Mack takes the trick
+
+Queen of Clubs led by Mack
+King of Clubs played by Horace
+Ace of Clubs played by Rick
+Jack of Clubs played by Steve
+Steve takes the trick
+
+Ten of Clubs led by Steve
+Ten of Hearts played by Mack
+Queen of Hearts played by Horace
+Nine of Spades played by Rick
+Rick takes the trick
+
+King of Spades led by Rick
+Jack of Spades played by Steve
+Ace of Spades played by Mack
+Ten of Spades played by Horace
+Steve takes the trick
+
+Rick and Mack win the hand
+euchred!
+Rick and Mack have 2 points
+Steve and Horace have 0 points
+
+Hand 1
+Steve deals
+King of Spades turned up
+Mack orders up Spades
+
+Ten of Diamonds led by Mack
+Ace of Diamonds played by Horace
+Nine of Hearts played by Rick
+King of Hearts played by Steve
+Horace takes the trick
+
+King of Diamonds led by Horace
+Jack of Hearts played by Rick
+Ace of Hearts played by Steve
+Nine of Clubs played by Mack
+Horace takes the trick
+
+Queen of Clubs led by Horace
+King of Clubs played by Rick
+Ace of Clubs played by Steve
+Jack of Clubs played by Mack
+Mack takes the trick
+
+Ten of Clubs led by Mack
+Ten of Hearts played by Horace
+Queen of Hearts played by Rick
+Nine of Spades played by Steve
+Steve takes the trick
+
+King of Spades led by Steve
+Jack of Spades played by Mack
+Ace of Spades played by Horace
+Ten of Spades played by Rick
+Mack takes the trick
+
+Steve and Horace win the hand
+euchred!
+Rick and Mack have 2 points
+Steve and Horace have 2 points
+
+Hand 2
+Mack deals
+King of Spades turned up
+Horace orders up Spades
+
+Ten of Diamonds led by Horace
+Ace of Diamonds played by Rick
+Nine of Hearts played by Steve
+King of Hearts played by Mack
+Rick takes the trick
+
+King of Diamonds led by Rick
+Jack of Hearts played by Steve
+Ace of Hearts played by Mack
+Nine of Clubs played by Horace
+Rick takes the trick
+
+Queen of Clubs led by Rick
+King of Clubs played by Steve
+Ace of Clubs played by Mack
+Jack of Clubs played by Horace
+Horace takes the trick
+
+Ten of Clubs led by Horace
+Ten of Hearts played by Rick
+Queen of Hearts played by Steve
+Nine of Spades played by Mack
+Mack takes the trick
+
+King of Spades led by Mack
+Jack of Spades played by Horace
+Ace of Spades played by Rick
+Ten of Spades played by Steve
+Horace takes the trick
+
+Rick and Mack win the hand
+euchred!
+Rick and Mack have 4 points
+Steve and Horace have 2 points
+
+Hand 3
+Horace deals
+King of Spades turned up
+Rick orders up Spades
+
+Ten of Diamonds led by Rick
+Ace of Diamonds played by Steve
+Nine of Hearts played by Mack
+King of Hearts played by Horace
+Steve takes the trick
+
+King of Diamonds led by Steve
+Jack of Hearts played by Mack
+Ace of Hearts played by Horace
+Nine of Clubs played by Rick
+Steve takes the trick
+
+Queen of Clubs led by Steve
+King of Clubs played by Mack
+Ace of Clubs played by Horace
+Jack of Clubs played by Rick
+Rick takes the trick
+
+Ten of Clubs led by Rick
+Ten of Hearts played by Steve
+Queen of Hearts played by Mack
+Nine of Spades played by Horace
+Horace takes the trick
+
+King of Spades led by Horace
+Jack of Spades played by Rick
+Ace of Spades played by Steve
+Ten of Spades played by Mack
+Rick takes the trick
+
+Steve and Horace win the hand
+euchred!
+Rick and Mack have 4 points
+Steve and Horace have 4 points
+
+Hand 4
+Rick deals
+King of Spades turned up
+Steve orders up Spades
+
+Ten of Diamonds led by Steve
+Ace of Diamonds played by Mack
+Nine of Hearts played by Horace
+King of Hearts played by Rick
+Mack takes the trick
+
+King of Diamonds led by Mack
+Jack of Hearts played by Horace
+Ace of Hearts played by Rick
+Nine of Clubs played by Steve
+Mack takes the trick
+
+Queen of Clubs led by Mack
+King of Clubs played by Horace
+Ace of Clubs played by Rick
+Jack of Clubs played by Steve
+Steve takes the trick
+
+Ten of Clubs led by Steve
+Ten of Hearts played by Mack
+Queen of Hearts played by Horace
+Nine of Spades played by Rick
+Rick takes the trick
+
+King of Spades led by Rick
+Jack of Spades played by Steve
+Ace of Spades played by Mack
+Ten of Spades played by Horace
+Steve takes the trick
+
+Rick and Mack win the hand
+euchred!
+Rick and Mack have 6 points
+Steve and Horace have 4 points
+
+Hand 5
+Steve deals
+King of Spades turned up
+Mack orders up Spades
+
+Ten of Diamonds led by Mack
+Ace of Diamonds played by Horace
+Nine of Hearts played by Rick
+King of Hearts played by Steve
+Horace takes the trick
+
+King of Diamonds led by Horace
+Jack of Hearts played by Rick
+Ace of Hearts played by Steve
+Nine of Clubs played by Mack
+Horace takes the trick
+
+Queen of Clubs led by Horace
+King of Clubs played by Rick
+Ace of Clubs played by Steve
+Jack of Clubs played by Mack
+Mack takes the trick
+
+Ten of Clubs led by Mack
+Ten of Hearts played by Horace
+Queen of Hearts played by Rick
+Nine of Spades played by Steve
+Steve takes the trick
+
+King of Spades led by Steve
+Jack of Spades played by Mack
+Ace of Spades played by Horace
+Ten of Spades played by Rick
+Mack takes the trick
+
+Steve and Horace win the hand
+euchred!
+Rick and Mack have 6 points
+Steve and Horace have 6 points
+
+Hand 6
+Mack deals
+King of Spades turned up
+Horace orders up Spades
+
+Ten of Diamonds led by Horace
+Ace of Diamonds played by Rick
+Nine of Hearts played by Steve
+King of Hearts played by Mack
+Rick takes the trick
+
+King of Diamonds led by Rick
+Jack of Hearts played by Steve
+Ace of Hearts played by Mack
+Nine of Clubs played by Horace
+Rick takes the trick
+
+Queen of Clubs led by Rick
+King of Clubs played by Steve
+Ace of Clubs played by Mack
+Jack of Clubs played by Horace
+Horace takes the trick
+
+Ten of Clubs led by Horace
+Ten of Hearts played by Rick
+Queen of Hearts played by Steve
+Nine of Spades played by Mack
+Mack takes the trick
+
+King of Spades led by Mack
+Jack of Spades played by Horace
+Ace of Spades played by Rick
+Ten of Spades played by Steve
+Horace takes the trick
+
+Rick and Mack win the hand
+euchred!
+Rick and Mack have 8 points
+Steve and Horace have 6 points
+
+Hand 7
+Horace deals
+King of Spades turned up
+Rick orders up Spades
+
+Ten of Diamonds led by Rick
+Ace of Diamonds played by Steve
+Nine of Hearts played by Mack
+King of Hearts played by Horace
+Steve takes the trick
+
+King of Diamonds led by Steve
+Jack of Hearts played by Mack
+Ace of Hearts played by Horace
+Nine of Clubs played by Rick
+Steve takes the trick
+
+Queen of Clubs led by Steve
+King of Clubs played by Mack
+Ace of Clubs played by Horace
+Jack of Clubs played by Rick
+Rick takes the trick
+
+Ten of Clubs led by Rick
+Ten of Hearts played by Steve
+Queen of Hearts played by Mack
+Nine of Spades played by Horace
+Horace takes the trick
+
+King of Spades led by Horace
+Jack of Spades played by Rick
+Ace of Spades played by Steve
+Ten of Spades played by Mack
+Rick takes the trick
+
+Steve and Horace win the hand
+euchred!
+Rick and Mack have 8 points
+Steve and Horace have 8 points
+
+Hand 8
+Rick deals
+King of Spades turned up
+Steve orders up Spades
+
+Ten of Diamonds led by Steve
+Ace of Diamonds played by Mack
+Nine of Hearts played by Horace
+King of Hearts played by Rick
+Mack takes the trick
+
+King of Diamonds led by Mack
+Jack of Hearts played by Horace
+Ace of Hearts played by Rick
+Nine of Clubs played by Steve
+Mack takes the trick
+
+Queen of Clubs led by Mack
+King of Clubs played by Horace
+Ace of Clubs played by Rick
+Jack of Clubs played by Steve
+Steve takes the trick
+
+Ten of Clubs led by Steve
+Ten of Hearts played by Mack
+Queen of Hearts played by Horace
+Nine of Spades played by Rick
+Rick takes the trick
+
+King of Spades led by Rick
+Jack of Spades played by Steve
+Ace of Spades played by Mack
+Ten of Spades played by Horace
+Steve takes the trick
+
+Rick and Mack win the hand
+euchred!
+Rick and Mack have 10 points
+Steve and Horace have 8 points
+
+Rick and Mack win!

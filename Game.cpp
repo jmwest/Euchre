@@ -56,6 +56,7 @@ static void Game_print_hand_winner(const Game *game_ptr, const int &team_won);
 //
 static void Game_print_team_score(const Game *game_ptr, const int &team);
 
+//
 static void Game_print_winners(const Game *game_ptr, const int &team);
 
 //
