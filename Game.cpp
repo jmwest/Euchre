@@ -17,49 +17,74 @@ using namespace std;
 //			Otherwise, reset the pack.
 static void Game_shuffle(Game *game_ptr);
 
-//
+//REQUIRES: game_ptr is initialized
+//			dealer is initialized
+//			dealer_num is the index of the dealer, 0 - 3, inclusive
+//EFFECTS: deals out the deck to all the players in the game, starting with the player left of the dealer. The deal pattern is described in the project spec
 static void Game_deal_hands(Game *game_ptr, Player *dealer, const int dealer_num);
 
-//
-static void Game_deal_card(Game *game_ptr, Player *dealer, const int dealer_num);
+//REQUIRES: game_ptr is initialized
+//			dealer is initialized
+//			player_num is the index of the player, 0 - 3 inclusive, being delt a card
+//EFFECTS: deals a single card to the player at the index, player_num
+static void Game_deal_card(Game *game_ptr, Player *dealer, const int player_num);
 
-//
+//REQUIRES: game_ptr is initialized
+//EFFECTS: 
 static Suit Game_select_trump(Game *game_ptr, Player *dealer, const int dealer_num, Card *upcard, int &team_made);
 
-//
+//REQUIRES: game_ptr is initialized
+//EFFECTS:
 static void Game_play_hand(Game *game_ptr, Suit trump, Player *dealer, int dealer_num, int team_made);
 
-//
+//REQUIRES: game_ptr is initialized
+//EFFECTS: 
 static void Game_print_hand_and_dealer(const int &hand, const Player *dealer);
 
-//
+//REQUIRES: card is initialized
+//EFFECTS: prints the card that turns up after the deal using cout
 static void Game_print_turnup(const Card *card);
 
-//
+//REQUIRES: player is initialized
+//EFFECTS: prints out the name of the player that passed the make using cout
 static void Game_print_passes(const Player *player);
 
-//
+//REQUIRES: player is initialized
+//			suit is a valid Suit
+//EFFECTS: prints out the name of the player that ordered up trump using cout
 static void Game_print_orderup(const Player *player, const Suit &suit);
 
-//
+//REQUIRES: player is initialized
+//			card is initialized
+//EFFECTS: prints out the name of the player leading a trick and the card that they led using cout
 static void Game_print_led(const Player *player, const Card *card);
 
-//
+//REQUIRES: player is initialized
+//			card is initialized
+//EFFECTS: prints out the name of the player and the card that they played using cout
 static void Game_print_play(const Player *player, const Card *card);
 
-//
+//REQUIRES: player is initialized
+//EFFECTS: prints the name of the player who won the trick using cout
 static void Game_print_trick_winner(const Player *player);
 
-//
+//REQUIRES: game_ptr is initialized
+//			team_won is either 0 or 1, which represent the two teams
+//EFFECTS: prints the names of the players on the team that won the hand using cout
 static void Game_print_hand_winner(const Game *game_ptr, const int &team_won);
 
-//
+//REQUIRES: game_ptr is initialized
+//			team is either 0 or 1, which represent the two teams
+//EFFECTS: prints the score of the team passed in using cout
 static void Game_print_team_score(const Game *game_ptr, const int &team);
 
-//
+//REQUIRES: game_ptr is initialized
+//			team is either 0 or 1, which represent the two teams
+//EFFECTS: print the names of the players on the winning team using cout
 static void Game_print_winners(const Game *game_ptr, const int &team);
 
-//
+//REQUIRES: player_index is between 0 and 3, inclusive
+//EFFECTS: returns the index of the player who is left of the player index passed in
 static int Player_left(int player_index);
 
 const char *suit_names[] = {"Spades", "Hearts", "Clubs", "Diamonds"};
@@ -108,10 +133,6 @@ void Game_play(Game *game_ptr)
 		Game_print_turnup(&upcard);
 
 		trump = Game_select_trump(game_ptr, &game_ptr->players[dealer], dealer, &upcard, team_made);
-
-//		for (int i = 0; i < 4; i++) {
-//			Player_print(&game_ptr->players[i]);
-//		}
 
 		Game_play_hand(game_ptr, trump, &game_ptr->players[dealer], dealer, team_made);
 
@@ -185,11 +206,11 @@ static void Game_deal_hands(Game *game_ptr, Player *dealer, const int dealer_num
 	return;
 }
 
-static void Game_deal_card(Game *game_ptr, Player *dealer, const int dealer_num)
+static void Game_deal_card(Game *game_ptr, Player *dealer, const int player_num)
 {
 	Card next_card = Pack_deal_one(&game_ptr->pack);
 	
-	Player_add_card(&game_ptr->players[dealer_num],
+	Player_add_card(&game_ptr->players[player_num],
 					&next_card);
 }
 

@@ -14,6 +14,7 @@
 
 using namespace std;
 
+// EFFECTS: prints out the failure message and then exits the program using EXIT_FAILURE
 static void Euchre_print_failure();
 
 int main(int argc, char *argv[])
