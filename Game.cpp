@@ -20,25 +20,31 @@ static void Game_shuffle(Game *game_ptr);
 //REQUIRES: game_ptr is initialized
 //			dealer is initialized
 //			dealer_num is the index of the dealer, 0 - 3, inclusive
+//MODIFIES: game_ptr
 //EFFECTS: deals out the deck to all the players in the game, starting with the player left of the dealer. The deal pattern is described in the project spec
 static void Game_deal_hands(Game *game_ptr, Player *dealer, const int dealer_num);
 
 //REQUIRES: game_ptr is initialized
 //			dealer is initialized
 //			player_num is the index of the player, 0 - 3 inclusive, being delt a card
+//MODIFIES: game_ptr
 //EFFECTS: deals a single card to the player at the index, player_num
 static void Game_deal_card(Game *game_ptr, Player *dealer, const int player_num);
 
 //REQUIRES: game_ptr is initialized
-//EFFECTS: 
+//EFFECTS: Returns the suit of trump that is made by a player.
+//			Goes through the entire making process and prints out each player's decision using cout
 static Suit Game_select_trump(Game *game_ptr, Player *dealer, const int dealer_num, Card *upcard, int &team_made);
 
 //REQUIRES: game_ptr is initialized
-//EFFECTS:
-static void Game_play_hand(Game *game_ptr, Suit trump, Player *dealer, int dealer_num, int team_made);
+//MODIFIES: game_ptr
+//EFFECTS: plays through an entire hand.
+//			assigns points won from the hand to the winning team
+static void Game_play_hand(Game *game_ptr, Suit trump, Player *dealer, int dealer_num, const int team_made);
 
-//REQUIRES: game_ptr is initialized
-//EFFECTS: 
+//REQUIRES: dealer is initialized
+//			hand is an integer >= 0
+//EFFECTS: prints the hand number and the dealer of the hand using cout
 static void Game_print_hand_and_dealer(const int &hand, const Player *dealer);
 
 //REQUIRES: card is initialized
@@ -87,8 +93,8 @@ static void Game_print_winners(const Game *game_ptr, const int &team);
 //EFFECTS: returns the index of the player who is left of the player index passed in
 static int Player_left(int player_index);
 
-const char *suit_names[] = {"Spades", "Hearts", "Clubs", "Diamonds"};
-const char *rank_names[] = {"Two", "Three", "Four", "Five", "Six",
+const char *SUIT_NAME_ARRAY[] = {"Spades", "Hearts", "Clubs", "Diamonds"};
+const char *RANK_NAME_ARRAY[] = {"Two", "Three", "Four", "Five", "Six",
     "Seven", "Eight", "Nine", "Ten", "Jack",
     "Queen", "King", "Ace"};
 const int TEAM_ONE = 0;
@@ -254,7 +260,7 @@ static int Player_left(int player_index)
 	return (player_index + 1) % 4;
 }
 
-static void Game_play_hand(Game *game_ptr, Suit trump, Player *dealer, int dealer_num, int team_made)
+static void Game_play_hand(Game *game_ptr, Suit trump, Player *dealer, int dealer_num, const int team_made)
 {
 	int lead_player = Player_left(dealer_num);
 	int highest_card = 0;
@@ -341,7 +347,7 @@ static void Game_print_hand_and_dealer(const int &hand, const Player *dealer)
 
 static void Game_print_turnup(const Card *card)
 {
-	cout << rank_names[card->rank] << " of " << suit_names[card->suit] << " turned up" << endl;
+	cout << RANK_NAME_ARRAY[card->rank] << " of " << SUIT_NAME_ARRAY[card->suit] << " turned up" << endl;
 
 	return;
 }
@@ -355,7 +361,7 @@ static void Game_print_passes(const Player *player)
 
 static void Game_print_orderup(const Player *player, const Suit &suit)
 {
-	cout << player->name << " orders up " << suit_names[suit] << endl;
+	cout << player->name << " orders up " << SUIT_NAME_ARRAY[suit] << endl;
 
 	return;
 }
@@ -363,14 +369,14 @@ static void Game_print_orderup(const Player *player, const Suit &suit)
 static void Game_print_led(const Player *player, const Card *card)
 {
 	cout << endl;
-	cout << rank_names[card->rank] << " of " << suit_names[card->suit] << " led by " << player->name << endl;
+	cout << RANK_NAME_ARRAY[card->rank] << " of " << SUIT_NAME_ARRAY[card->suit] << " led by " << player->name << endl;
 
 	return;
 }
 
 static void Game_print_play(const Player *player, const Card *card)
 {
-	cout << rank_names[card->rank] << " of " << suit_names[card->suit] << " played by " << player->name << endl;
+	cout << RANK_NAME_ARRAY[card->rank] << " of " << SUIT_NAME_ARRAY[card->suit] << " played by " << player->name << endl;
 
 	return;
 }
