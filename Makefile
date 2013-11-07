@@ -27,6 +27,8 @@ test : Card_test Pack_test Player_test euchre
 test2: euchre
 	./euchre pack2.in noshuffle 10 Rick Steve Mack Horace > euchre_test10.out
 	./euchre pack2.in shuffle 30 Rick Steve Mack Horace > euchre_test11.out
+	./euchre pack3.in noshuffle 10 Rachel Anna John Damian > euchre_test20.out
+	./euchre pack3.in shuffle 99 Rachel Anna John Damian > euchre_test21.out
 
 # type "make clean" to delete executables and temporary files
 clean :
