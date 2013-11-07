@@ -28,7 +28,12 @@ test2: euchre
 	./euchre pack2.in noshuffle 10 Rick Steve Mack Horace > euchre_test10.out
 	./euchre pack2.in shuffle 30 Rick Steve Mack Horace > euchre_test11.out
 	./euchre pack3.in noshuffle 10 Rachel Anna John Damian > euchre_test20.out
+	diff -q euchre_test20.out euchre_test20.out.anna
 	./euchre pack3.in shuffle 99 Rachel Anna John Damian > euchre_test21.out
+	diff -q euchre_test21.out euchre_test21.out.anna
+	./euchre pack4.in noshuffle 25 Thor Hulk Widow Spidey > euchre_test04.out.john
+	diff -q euchre_test04.out euchre_test04.out.john
+	./euchre pack4.in shuffle 25 Thor Hulk Widow Spidey > euchre_test05.out.john
 
 # type "make clean" to delete executables and temporary files
 clean :
