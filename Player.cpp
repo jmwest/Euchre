@@ -212,7 +212,7 @@ Card Player_play_card(Player *player_ptr, Suit led_suit, Suit trump)
 
 		for (int j = 1; j < number_cards_following_led; j++)
 		{
-			if (Card_compare(&card_to_play, &player_ptr->hand[cards_following_led[j]]) < 0)
+			if (Card_compare(&card_to_play, &player_ptr->hand[cards_following_led[j]], led_suit, trump) < 0)
 			{
 				card_to_play = player_ptr->hand[cards_following_led[j]];
 				index_of_played_card = cards_following_led[j];
