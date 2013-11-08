@@ -1,0 +1,46 @@
+./euchre pack5.in noshuffle 1 Rachel Anna John Damian 
+Hand 0
+Rachel deals
+Queen of Diamonds turned up
+Anna passes
+John passes
+Damian passes
+Rachel passes
+Anna orders up Hearts
+
+Nine of Diamonds led by Anna
+Ten of Clubs played by John
+King of Diamonds played by Damian
+Ace of Diamonds played by Rachel
+Rachel takes the trick
+
+Ace of Spades led by Rachel
+Nine of Spades played by Anna
+Jack of Spades played by John
+King of Spades played by Damian
+Rachel takes the trick
+
+Ten of Diamonds led by Rachel
+Nine of Clubs played by Anna
+Jack of Clubs played by John
+Queen of Spades played by Damian
+Rachel takes the trick
+
+Ten of Spades led by Rachel
+Ten of Hearts played by Anna
+Queen of Clubs played by John
+King of Clubs played by Damian
+Anna takes the trick
+
+Jack of Diamonds led by Anna
+Jack of Hearts played by John
+Ace of Clubs played by Damian
+Nine of Hearts played by Rachel
+John takes the trick
+
+Rachel and John win the hand
+euchred!
+Rachel and John have 2 points
+Anna and Damian have 0 points
+
+Rachel and John win!
