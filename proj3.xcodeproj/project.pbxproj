@@ -1,0 +1,314 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		273922D71803273C00E791E1 /* Card.h in Headers */ = {isa = PBXBuildFile; fileRef = 273922CD1803273C00E791E1 /* Card.h */; };
+		273922D81803273C00E791E1 /* Game.h in Headers */ = {isa = PBXBuildFile; fileRef = 273922D01803273C00E791E1 /* Game.h */; };
+		273922D91803273C00E791E1 /* Pack.h in Headers */ = {isa = PBXBuildFile; fileRef = 273922D31803273C00E791E1 /* Pack.h */; };
+		273922DA1803273C00E791E1 /* Player.h in Headers */ = {isa = PBXBuildFile; fileRef = 273922D61803273C00E791E1 /* Player.h */; };
+		273922DD1803277600E791E1 /* euchre.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 273922DB1803277600E791E1 /* euchre.cpp */; };
+		273922DE1803277600E791E1 /* euchre.h in Headers */ = {isa = PBXBuildFile; fileRef = 273922DC1803277600E791E1 /* euchre.h */; };
+		279C69931811E56000652A33 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 279C69921811E56000652A33 /* Game.cpp */; };
+		27CA29C218091AC700D00699 /* Pack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27CA29C118091AC700D00699 /* Pack.cpp */; };
+		27D3033918064A56001A5D18 /* Card_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27D3033718064A56001A5D18 /* Card_test.cpp */; };
+		27D3033C1806EF78001A5D18 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 27D3033B1806EF78001A5D18 /* Makefile */; };
+		27D97972180C587D00D9FA45 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27D97971180C587D00D9FA45 /* Player.cpp */; };
+		27D97975180C69AD00D9FA45 /* Pack_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27D97973180C69AD00D9FA45 /* Pack_test.cpp */; };
+		27D97979180D055400D9FA45 /* Player_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27D97977180D055400D9FA45 /* Player_test.cpp */; };
+		27E4F6281805B92000CF0D2D /* Card.cpp.starter in Sources */ = {isa = PBXBuildFile; fileRef = 273922CC1803273C00E791E1 /* Card.cpp.starter */; };
+		27E4F62A1805BC7C00CF0D2D /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27E4F6291805BC7C00CF0D2D /* Card.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		27144F7D180F35290083953C /* pack2.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pack2.in; sourceTree = "<group>"; };
+		27191B7A182A042200EC443A /* euchre_test10.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test10.out; sourceTree = "<group>"; };
+		27191B7B182A042200EC443A /* euchre_test11.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test11.out; sourceTree = "<group>"; };
+		27191B7C182A096600EC443A /* euchre_test_copy1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test_copy1; sourceTree = "<group>"; };
+		27191B7D182A096600EC443A /* euchre_test_copy2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test_copy2; sourceTree = "<group>"; };
+		273922C4180326DD00E791E1 /* libproj3.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libproj3.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		273922CB1803273C00E791E1 /* Card_test.cpp.starter */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = Card_test.cpp.starter; sourceTree = "<group>"; };
+		273922CC1803273C00E791E1 /* Card.cpp.starter */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = Card.cpp.starter; sourceTree = "<group>"; usesTabs = 1; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		273922CD1803273C00E791E1 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		273922CE1803273C00E791E1 /* euchre_test00.out.correct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test00.out.correct; sourceTree = "<group>"; };
+		273922CF1803273C00E791E1 /* euchre_test01.out.correct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test01.out.correct; sourceTree = "<group>"; };
+		273922D01803273C00E791E1 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		273922D11803273C00E791E1 /* Makefile.starter */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.starter; sourceTree = "<group>"; };
+		273922D21803273C00E791E1 /* Pack_test.cpp.starter */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pack_test.cpp.starter; sourceTree = "<group>"; };
+		273922D31803273C00E791E1 /* Pack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pack.h; sourceTree = "<group>"; };
+		273922D41803273C00E791E1 /* pack.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pack.in; sourceTree = "<group>"; };
+		273922D51803273C00E791E1 /* Player_test.cpp.starter */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Player_test.cpp.starter; sourceTree = "<group>"; };
+		273922D61803273C00E791E1 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		273922DB1803277600E791E1 /* euchre.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = euchre.cpp; sourceTree = "<group>"; usesTabs = 1; };
+		273922DC1803277600E791E1 /* euchre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = euchre.h; sourceTree = "<group>"; };
+		273EE36F1820091900D77CB7 /* Card_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Card_test.out; sourceTree = "<group>"; };
+		273EE3701820091900D77CB7 /* euchre_test00.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test00.out; sourceTree = "<group>"; };
+		273EE3711820091900D77CB7 /* Pack_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Pack_test.out; sourceTree = "<group>"; };
+		273EE3721820091900D77CB7 /* Player_test.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Player_test.out; sourceTree = "<group>"; };
+		27551CE3182C74CC002593D4 /* pack4.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pack4.in; sourceTree = "<group>"; };
+		27551CE4182C756F002593D4 /* pack5.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pack5.in; sourceTree = "<group>"; };
+		27551CE5182C76E8002593D4 /* euchre_test50.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test50.out; sourceTree = "<group>"; };
+		279C69921811E56000652A33 /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		27C84C211821794A00A5E6FF /* euchre_test01.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test01.out; sourceTree = "<group>"; };
+		27CA29C118091AC700D00699 /* Pack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pack.cpp; sourceTree = "<group>"; };
+		27D3033718064A56001A5D18 /* Card_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Card_test.cpp; sourceTree = "<group>"; };
+		27D3033B1806EF78001A5D18 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		27D48391182B660C0046F1D9 /* pack3.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pack3.in; sourceTree = "<group>"; };
+		27D48392182B678B0046F1D9 /* euchre_test20.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test20.out; sourceTree = "<group>"; };
+		27D48393182B68AB0046F1D9 /* euchre_test21.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = euchre_test21.out; sourceTree = "<group>"; };
+		27D97971180C587D00D9FA45 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		27D97973180C69AD00D9FA45 /* Pack_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pack_test.cpp; sourceTree = "<group>"; };
+		27D97977180D055400D9FA45 /* Player_test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player_test.cpp; sourceTree = "<group>"; };
+		27E4F6291805BC7C00CF0D2D /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		273922C1180326DD00E791E1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		273922BB180326DD00E791E1 = {
+			isa = PBXGroup;
+			children = (
+				273922C5180326DD00E791E1 /* Products */,
+				273922CD1803273C00E791E1 /* Card.h */,
+				27E4F6291805BC7C00CF0D2D /* Card.cpp */,
+				273922D31803273C00E791E1 /* Pack.h */,
+				27CA29C118091AC700D00699 /* Pack.cpp */,
+				273922D61803273C00E791E1 /* Player.h */,
+				27D97971180C587D00D9FA45 /* Player.cpp */,
+				273922DC1803277600E791E1 /* euchre.h */,
+				273922DB1803277600E791E1 /* euchre.cpp */,
+				273922D01803273C00E791E1 /* Game.h */,
+				279C69921811E56000652A33 /* Game.cpp */,
+				273922D41803273C00E791E1 /* pack.in */,
+				27144F7D180F35290083953C /* pack2.in */,
+				27D48391182B660C0046F1D9 /* pack3.in */,
+				27551CE3182C74CC002593D4 /* pack4.in */,
+				27551CE4182C756F002593D4 /* pack5.in */,
+				27D3033718064A56001A5D18 /* Card_test.cpp */,
+				27D97973180C69AD00D9FA45 /* Pack_test.cpp */,
+				27D97977180D055400D9FA45 /* Player_test.cpp */,
+				273922CC1803273C00E791E1 /* Card.cpp.starter */,
+				273922CB1803273C00E791E1 /* Card_test.cpp.starter */,
+				273922D21803273C00E791E1 /* Pack_test.cpp.starter */,
+				273922D51803273C00E791E1 /* Player_test.cpp.starter */,
+				273EE36F1820091900D77CB7 /* Card_test.out */,
+				273EE3701820091900D77CB7 /* euchre_test00.out */,
+				27C84C211821794A00A5E6FF /* euchre_test01.out */,
+				27191B7A182A042200EC443A /* euchre_test10.out */,
+				27191B7B182A042200EC443A /* euchre_test11.out */,
+				27D48392182B678B0046F1D9 /* euchre_test20.out */,
+				27D48393182B68AB0046F1D9 /* euchre_test21.out */,
+				27551CE5182C76E8002593D4 /* euchre_test50.out */,
+				27191B7C182A096600EC443A /* euchre_test_copy1 */,
+				27191B7D182A096600EC443A /* euchre_test_copy2 */,
+				273EE3711820091900D77CB7 /* Pack_test.out */,
+				273EE3721820091900D77CB7 /* Player_test.out */,
+				273922CE1803273C00E791E1 /* euchre_test00.out.correct */,
+				273922CF1803273C00E791E1 /* euchre_test01.out.correct */,
+				273922D11803273C00E791E1 /* Makefile.starter */,
+				27D3033B1806EF78001A5D18 /* Makefile */,
+			);
+			sourceTree = "<group>";
+		};
+		273922C5180326DD00E791E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				273922C4180326DD00E791E1 /* libproj3.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		273922C2180326DD00E791E1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				273922D71803273C00E791E1 /* Card.h in Headers */,
+				273922D81803273C00E791E1 /* Game.h in Headers */,
+				273922D91803273C00E791E1 /* Pack.h in Headers */,
+				273922DA1803273C00E791E1 /* Player.h in Headers */,
+				273922DE1803277600E791E1 /* euchre.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		273922C3180326DD00E791E1 /* proj3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 273922C8180326DD00E791E1 /* Build configuration list for PBXNativeTarget "proj3" */;
+			buildPhases = (
+				273922C0180326DD00E791E1 /* Sources */,
+				273922C1180326DD00E791E1 /* Frameworks */,
+				273922C2180326DD00E791E1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = proj3;
+			productName = proj3;
+			productReference = 273922C4180326DD00E791E1 /* libproj3.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		273922BC180326DD00E791E1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "John West";
+			};
+			buildConfigurationList = 273922BF180326DD00E791E1 /* Build configuration list for PBXProject "proj3" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 273922BB180326DD00E791E1;
+			productRefGroup = 273922C5180326DD00E791E1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				273922C3180326DD00E791E1 /* proj3 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		273922C0180326DD00E791E1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				273922DD1803277600E791E1 /* euchre.cpp in Sources */,
+				27E4F6281805B92000CF0D2D /* Card.cpp.starter in Sources */,
+				27E4F62A1805BC7C00CF0D2D /* Card.cpp in Sources */,
+				27D3033918064A56001A5D18 /* Card_test.cpp in Sources */,
+				27D3033C1806EF78001A5D18 /* Makefile in Sources */,
+				27CA29C218091AC700D00699 /* Pack.cpp in Sources */,
+				27D97972180C587D00D9FA45 /* Player.cpp in Sources */,
+				27D97975180C69AD00D9FA45 /* Pack_test.cpp in Sources */,
+				27D97979180D055400D9FA45 /* Player_test.cpp in Sources */,
+				279C69931811E56000652A33 /* Game.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		273922C6180326DD00E791E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		273922C7180326DD00E791E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		273922C9180326DD00E791E1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		273922CA180326DD00E791E1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		273922BF180326DD00E791E1 /* Build configuration list for PBXProject "proj3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				273922C6180326DD00E791E1 /* Debug */,
+				273922C7180326DD00E791E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		273922C8180326DD00E791E1 /* Build configuration list for PBXNativeTarget "proj3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				273922C9180326DD00E791E1 /* Debug */,
+				273922CA180326DD00E791E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 273922BC180326DD00E791E1 /* Project object */;
+}
